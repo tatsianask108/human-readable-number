@@ -19,7 +19,9 @@ module.exports = function toReadable (number) {
     
       if (number < 1000) {
         let res = +String(number).slice(-2)
-        let res2 = tens[Math.floor(res / 10)] + (res % 10 === 0 ? '' : ' ' + ones[res % 10])
+        if (res > 19) {
+            res2 = tens[Math.floor(res / 10)] + (res % 10 === 0 ? '' : ' ' + ones[res % 10])
+        } else res2 = ones[res]
         return ones[Math.floor(number / 100)] + ' hundred' + (number % 100 === 0 ? '' : ' ' + res2);
 }
 }
