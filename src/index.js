@@ -18,6 +18,8 @@ module.exports = function toReadable (number) {
       }
     
       if (number < 1000) {
-        return 'don\'t know yet'
-      }
+        let res = +String(number).slice(-2)
+        let res2 = tens[Math.floor(res / 10)] + (res % 10 === 0 ? '' : ' ' + ones[res % 10])
+        return ones[Math.floor(number / 100)] + ' hundred' + (number % 100 === 0 ? '' : ' ' + res2);
+}
 }
